@@ -64,11 +64,19 @@ UNTRIMMED_COMMITTER_TOKEN=${!USER_TOKEN:-$GITHUB_TOKEN}
 COMMITTER_TOKEN="$(echo -e "${UNTRIMMED_COMMITTER_TOKEN}" | tr -d '[:space:]')"
 
 git remote set-url origin https://x-access-token:$COMMITTER_TOKEN@github.com/$GITHUB_REPOSITORY.git
+#git remote set-url origin git://x-access-token:$COMMITTER_TOKEN@github.com/$GITHUB_REPOSITORY.git
+
+echo "remote url https://x-access-token:$COMMITTER_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+
+#git@github.com:mitchwu/rebase.git
+#https://github.com/mitchwu/rebase.git
+
 git config --global user.email "$USER_EMAIL"
 git config --global user.name "$USER_NAME"
 
 git remote add fork https://x-access-token:$COMMITTER_TOKEN@github.com/$HEAD_REPO.git
 
+echo "fork url https://x-access-token:$COMMITTER_TOKEN@github.com/$HEAD_REPO.git"
 set -o xtrace
 
 # make sure branches are up-to-date
